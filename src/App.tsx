@@ -6,7 +6,6 @@ import Calculator from "./pages/Calculator";
 function App() {
   return (
     <BrowserRouter>
-
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="pages/calculator" element={<Calculator />} />

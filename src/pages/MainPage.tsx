@@ -1,13 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import Calculator from "./Calculator";
-
+import "./MainPage.css";
 
 function MainPage() {
   return (
-    <div>
+    <div >
       <nav>
-        <div>
+        <div className="toolbar">
           <a>
             <span>Hello</span>
           </a>
