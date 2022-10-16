@@ -1,4 +1,7 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import Calculator from "./Calculator";
+
 
 function MainPage() {
   return (
@@ -9,10 +12,10 @@ function MainPage() {
             <span>Hello</span>
           </a>
           <li>
-            <a>Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a>calculator</a>
+            <Link to="pages/calculator">Calculator</Link>
           </li>
           <li>
             <a>timer</a>
