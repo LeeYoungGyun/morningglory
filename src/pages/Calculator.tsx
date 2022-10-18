@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Calculator.css";
 
 function Calculator() {
   const [calc, setCalc] = useState("");
@@ -71,66 +70,66 @@ function Calculator() {
   };
 
   return (
-    <div className="bg-orange-700	"	>
-      <div className="calculator-grid">
-        <div className="output">
-          <div className="previous-operand"></div>
-          <div className="current-operand">
+    <div className="box-border">
+      <div className="">
+        <div className="">
+          <div className=""></div>
+          <div className="">
             {calc.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </div>
         </div>
-        <button className="span-two" onClick={allClear}>
-          AC
-        </button>
-        <button onClick={delCalc}>DEL</button>
-        <button value="÷" onClick={getOper}>
-          ÷
-        </button>
-        <button value="1" onClick={getNum}>
-          1
-        </button>
-        <button value="2" onClick={getNum}>
-          2
-        </button>
-        <button value="3" onClick={getNum}>
-          3
-        </button>
-        <button value="x" onClick={getOper}>
-          x
-        </button>
-        <button value="4" onClick={getNum}>
-          4
-        </button>
-        <button value="5" onClick={getNum}>
-          5
-        </button>
-        <button value="6" onClick={getNum}>
-          6
-        </button>
-        <button value="+" onClick={getOper}>
-          +
-        </button>
-        <button value="7" onClick={getNum}>
-          7
-        </button>
-        <button value="8" onClick={getNum}>
-          8
-        </button>
-        <button value="9" onClick={getNum}>
-          9
-        </button>
-        <button value="-" onClick={minus}>
-          -
-        </button>
-        <button value="." onClick={getPoint}>
-          .
-        </button>
-        <button value="0" onClick={getNum}>
-          0
-        </button>
-        <button className="span-two" value="=" onClick={getResult}>
-          =
-        </button>
+          <button className="" onClick={allClear}>
+            AC
+          </button>
+          <button className="" onClick={delCalc}>DEL</button>
+          <button className="" value="÷" onClick={getOper}>
+            ÷
+          </button>
+          <button className="" value="1" onClick={getNum}>
+            1
+          </button>
+          <button className="" value="2" onClick={getNum}>
+            2
+          </button>
+          <button className="" value="3" onClick={getNum}>
+            3
+          </button>
+          <button className="" value="x" onClick={getOper}>
+            x
+          </button>
+          <button className="" value="4" onClick={getNum}>
+            4
+          </button>
+          <button className="" value="5" onClick={getNum}>
+            5
+          </button>
+          <button className="" value="6" onClick={getNum}>
+            6
+          </button>
+          <button className=""  value="+" onClick={getOper}>
+            +
+          </button>
+          <button className="" value="7" onClick={getNum}>
+            7
+          </button>
+          <button className="" value="8" onClick={getNum}>
+            8
+          </button>
+          <button className="" value="9" onClick={getNum}>
+            9
+          </button>
+          <button className="" value="-" onClick={minus}>
+            -
+          </button>
+          <button className="" value="." onClick={getPoint}>
+            .
+          </button>
+          <button className="" value="0" onClick={getNum}>
+            0
+          </button>
+          <button className="" value="=" onClick={getResult}>
+            =
+          </button>
       </div>
     </div>
   );
