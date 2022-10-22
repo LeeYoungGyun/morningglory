@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-calculator {
+  @apply bg-gray-700 w-16 h-16 rounded-full items-center justify-center flex
+  text-center text-4xl cursor-pointer;
+}
+
+.btn-zero {
+  @apply bg-gray-700 w-2/3 h-16 rounded-full items-center justify-center flex
+  text-center text-4xl cursor-pointer relative col-span-2 justify-start;
+}
+
+.btn-function {
+  @apply bg-zinc-400 w-16 h-16 rounded-full items-center justify-center flex
+  text-center text-4xl cursor-pointer text-black;
+}
+
+.btn-operator {
+  @apply bg-orange-400 w-16 h-16 rounded-full items-center justify-center flex
+  text-center text-4xl cursor-pointer;
+}
