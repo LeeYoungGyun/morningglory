@@ -1,10 +1,10 @@
-import React, {MouseEvent, Dispatch, ReactElement, SetStateAction,} from "react";
+import React, { MouseEvent, ReactElement, useState } from "react";
 
-function Buttons(props: {
-  value: string;
-  changeValue: Dispatch<SetStateAction<string>>;
-}): ReactElement {
+function Buttons(props: { value: string; changeValue: any }): ReactElement {
   const { value, changeValue } = props;
+  const [memory, setMemory] = useState<any>(null);
+  const [operator, setOperator] = useState<any>(null);
+  const [dotBlock, setDotBlock] = useState(true);
 
   const handleButtonPress = (e: MouseEvent<HTMLButtonElement>) => {
     if (value === "0") {
@@ -13,19 +13,114 @@ function Buttons(props: {
       changeValue(value + e.currentTarget.value);
     }
   };
+  console.log("value =" + value);
+
+  const allClear = () => {
+    changeValue("0");
+    setMemory(null);
+    setOperator(null);
+    setDotBlock(true);
+  };
+
+  const changePlusMinus = () => {
+    changeValue((parseFloat(value) * -1).toString());
+  };
+
+  const percent = () => {
+    changeValue((parseFloat(value) / 100).toString());
+    setMemory(null);
+    setOperator(null);
+  };
+
+  const dot = (e: any) => {
+    if (value.length === 0) {
+      return;
+    }
+    if (dotBlock) {
+      changeValue(value + e.currentTarget.value);
+      setDotBlock(false);
+    }
+  };
+
+  const plus = () => {
+    if (operator !== null) {
+      if (operator === "+") {
+        setMemory(memory + parseFloat(value));
+        console.log(memory)
+        setDotBlock(true);
+      }
+    } else {
+      setMemory(parseFloat(value));
+      setDotBlock(true);
+    }
+    changeValue("0");
+    setOperator("+");
+  };
+  const minus = (e: any) => {
+    if (operator !== null) {
+      if (operator === "-") {
+        setMemory(memory + parseFloat(value));
+        setDotBlock(true);
+      }
+    } else {
+      setMemory(parseFloat(value));
+      setDotBlock(true);
+    }
+    changeValue("0");
+    setOperator("-");
+  };
+  const multiplication = () => {
+    if (operator !== null) {
+      if (operator === "*") {
+        setMemory(memory + parseFloat(value));
+        setDotBlock(true);
+      }
+    } else {
+      setMemory(parseFloat(value));
+      setDotBlock(true);
+    }
+    changeValue("0");
+    setOperator("*");
+  };
+  const division = () => {
+    if (operator !== null) {
+      if (operator === "÷") {
+        setMemory(memory + parseFloat(value));
+        setDotBlock(true);
+      }
+    } else {
+      setMemory(parseFloat(value));
+      setDotBlock(true);
+    }
+    changeValue("0");
+    setOperator("÷");
+  };
+  const equal = () => {
+    if (operator === "+") {
+      changeValue((memory + parseFloat(value)).toString());
+    } else if (operator === "-") {
+      changeValue((memory - parseFloat(value)).toString());
+    } else if (operator === "*") {
+      changeValue((memory * parseFloat(value)).toString());
+    } else if (operator === "÷") {
+      changeValue((memory / parseFloat(value)).toString());
+    }
+    setOperator(null);
+    setMemory(null);
+  };
 
   return (
     <div className="grid gap-3 grid-rows-5 grid-cols-4">
-      <button onClick={handleButtonPress} className="btn-function">
+      <button onClick={allClear} value="AC" className="btn-function">
         AC
       </button>
-      <button onClick={handleButtonPress} value="±" className="btn-function">
+      <button onClick={changePlusMinus} value="±" className="btn-function">
         ±
       </button>
-      <button onClick={handleButtonPress} value="%" className="btn-function">
+      <button onClick={percent} value="%" className="btn-function">
         %
       </button>
-      <button onClick={handleButtonPress} value="÷" className="btn-operator">
+      <button onClick={division} value="÷" className="btn-operator">
         ÷
       </button>
       <button onClick={handleButtonPress} value="7" className="btn-calculator">
@@ -37,7 +132,7 @@ function Buttons(props: {
       <button onClick={handleButtonPress} value="9" className="btn-calculator">
         9
       </button>
-      <button onClick={handleButtonPress} value="x" className="btn-operator">
+      <button onClick={multiplication} value="x" className="btn-operator">
         x
       </button>
       <button onClick={handleButtonPress} value="4" className="btn-calculator">
@@ -49,7 +144,7 @@ function Buttons(props: {
       <button onClick={handleButtonPress} value="6" className="btn-calculator">
         6
       </button>
-      <button onClick={handleButtonPress} value="-" className="btn-operator">
+      <button onClick={minus} value="-" className="btn-operator">
         -
       </button>
       <button onClick={handleButtonPress} value="1" className="btn-calculator">
@@ -61,16 +156,16 @@ function Buttons(props: {
       <button onClick={handleButtonPress} value="3" className="btn-calculator">
         3
       </button>
-      <button onClick={handleButtonPress} value="+" className="btn-operator">
+      <button onClick={plus} value="+" className="btn-operator">
         +
       </button>
       <button onClick={handleButtonPress} value="0" className="btn-zero">
         0
       </button>
-      <button onClick={handleButtonPress} value="." className="btn-calculator">
+      <button onClick={dot} value="." className="btn-calculator">
         .
       </button>
-      <button onClick={handleButtonPress} value="=" className="btn-operator">
+      <button onClick={equal} value="=" className="btn-operator">
         =
       </button>
     </div>

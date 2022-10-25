@@ -14,10 +14,10 @@
 
 .btn-function {
   @apply bg-zinc-400 w-16 h-16 rounded-full items-center justify-center flex
-  text-center text-4xl cursor-pointer text-black;
+  text-center text-4xl cursor-pointer text-black active:bg-white;
 }
 
 .btn-operator {
   @apply bg-orange-400 w-16 h-16 rounded-full items-center justify-center flex
-  text-center text-4xl cursor-pointer;
+  text-center text-4xl cursor-pointer focus:bg-white focus:text-orange-400;
 }
