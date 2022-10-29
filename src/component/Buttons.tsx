@@ -62,7 +62,7 @@ function Buttons(props: { value: string; changeValue: any }): ReactElement {
       <button onClick={percent} value="%" className="btn-function">
         %
       </button>
-      <button onClick={division} value="÷" className="btn-operator">
+      <button onClick={division} value="/" className="btn-operator">
         ÷
       </button>
       <button onClick={handleButtonPress} value="7" className="btn-calculator">
@@ -74,7 +74,7 @@ function Buttons(props: { value: string; changeValue: any }): ReactElement {
       <button onClick={handleButtonPress} value="9" className="btn-calculator">
         9
       </button>
-      <button onClick={multiplication} value="x" className="btn-operator">
+      <button onClick={multiplication} value="*" className="btn-operator">
         x
       </button>
       <button onClick={handleButtonPress} value="4" className="btn-calculator">

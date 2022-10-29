@@ -4,6 +4,7 @@ import Buttons from "../component/Buttons";
 function Calculator() {
   const [time, setTime] = useState("Loading...");
   const [value, setValue] = useState("0");
+  const [value2, setValue2] = useState("0");
 
   useEffect(() => {
     const Timer = setInterval(() => {
