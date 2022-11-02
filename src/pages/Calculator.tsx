@@ -4,8 +4,8 @@ import Buttons from "../component/Buttons";
 function Calculator() {
   const [time, setTime] = useState("Loading...");
   const [value, setValue] = useState("0");
-  const [value2, setValue2] = useState("0");
-  const [value3, setValue3] = useState("0");
+  const [memory, setMemory] = useState(null);
+  const [operator, setOperator] = useState(null);
 
   useEffect(() => {
     const Timer = setInterval(() => {
@@ -26,15 +26,15 @@ function Calculator() {
     <div className="flex justify-center">
       <div className="w-full h-full bg-black text-white rounded-3xl p-5 box-border max-w-lg">
         <div className="h-64 px-5 py-0 justify-between">{time}</div>
-        <div className="text-9xl mb-5 font-light text-right">{value2}</div>
-        <div className="text-9xl mb-5 font-light text-right">{value}</div>
+        <div className="text-3xl mb-5 font-light text-right">{memory} {operator}</div>
+        <div className="text-9xl mb-5 font-light text-right">{value ? value : value+memory}</div>
         <Buttons
           value={value}
           changeValue={setValue}
-          value2={value2}
-          setValue2={setValue2}
-          value3={value3}
-          setValue3={setValue3}
+          memory={memory}
+          setMemory={setMemory}
+          operator={operator}
+          setOperator={setOperator}
         />
       </div>
     </div>

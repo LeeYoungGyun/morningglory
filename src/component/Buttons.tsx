@@ -1,14 +1,15 @@
-import React, { MouseEvent, ReactElement, useEffect, useState } from "react";
+import React, { MouseEvent, ReactElement } from "react";
 
 function Buttons(props: {
   value: string;
   changeValue: any;
-  value2: any;
-  setValue2: any;
-  value3: any;
-  setValue3: any;
+  memory: any;
+  setMemory: any;
+  operator: any;
+  setOperator: any;
 }): ReactElement {
-  const { value, changeValue, value2, setValue2, value3, setValue3 } = props;
+  const { value, changeValue, memory, setMemory, operator, setOperator } =
+    props;
 
   const handleButtonPress = (e: MouseEvent<HTMLButtonElement>) => {
     if (value === "0") {
@@ -16,41 +17,140 @@ function Buttons(props: {
     } else {
       changeValue(value + e.currentTarget.value);
     }
+    // const num = parseFloat(value);
+
+    //   if (value[value.length - 1] === ".") {
+    //     setValue(value + content);
+    //   } else {
+    //     setValue(parseFloat(num + content).toString());
+    //   }
+    // };
   };
 
   const allClear = () => {
     changeValue("0");
+    setMemory(null);
+    setOperator(null);
+    return;
   };
 
   const changePlusMinus = () => {
     changeValue((parseFloat(value) * -1).toString());
+    return;
   };
 
   const percent = () => {
     changeValue((parseFloat(value) / 100).toString());
+    setMemory(null);
+    setOperator(null);
+    return;
   };
 
-  // const dot = (e: any) => {
-  //   if (value.length === 0) {
-  //     return;
-  //   }
-  //   if (dotBlock) {
-  //     changeValue(value + e.currentTarget.value);
-  //     setDotBlock(false);
-  //   }
-  // };
+  const dot = () => {
+    if (value.includes(".")) return;
+
+    changeValue(value + ".");
+    return;
+  };
 
   const plus = () => {
-      setValue2(value);
-      changeValue(value3);
-
+    if (operator !== null) {
+      if (operator === "+") {
+        setMemory(memory + parseFloat(value));
+      } else if (operator === "−") {
+        setMemory(memory - parseFloat(value));
+      } else if (operator === "×") {
+        setMemory(memory * parseFloat(value));
+      } else if (operator === "÷") {
+        setMemory(memory / parseFloat(value));
+      }
+    } else {
+      setMemory(parseFloat(value));
+    }
+    changeValue("0");
+    setOperator("+");
+    return;
   };
 
-  const minus = () => {};
+  const minus = () => {
+    if (operator !== null) {
+        console.log("memory =" + memory);
+      if (operator === "+") {
+        setMemory(memory + parseFloat(value));
+      } else if (operator === "−") {
+        setMemory(memory - parseFloat(value));
+      } else if (operator === "×") {
+        setMemory(memory * parseFloat(value));
+      } else if (operator === "÷") {
+        setMemory(memory / parseFloat(value));
+      }
+    } else {
+      setMemory(parseFloat(value));
+        console.log("memory2 = " + memory);
+    }
+    changeValue("0");
+    setOperator("−");
+      console.log("final memory =" + memory);
+      console.log("final memory =" + memory);
+      console.log("final value =" + value);
 
-  const multiplication = () => {};
-  const division = () => {};
-  const equal = () => {};
+    return;
+  };
+
+  const multiplication = () => {
+    if (operator !== null) {
+      if (operator === "+") {
+        setMemory(memory + parseFloat(value));
+      } else if (operator === "−") {
+        setMemory(memory - parseFloat(value));
+      } else if (operator === "×") {
+        setMemory(memory * parseFloat(value));
+      } else if (operator === "÷") {
+        setMemory(memory / parseFloat(value));
+      }
+    } else {
+      setMemory(parseFloat(value));
+    }
+    changeValue("0");
+    setOperator("×");
+    return;
+  };
+
+  const division = () => {
+    if (operator !== null) {
+      if (operator === "+") {
+        setMemory(memory + parseFloat(value));
+      } else if (operator === "−") {
+        setMemory(memory - parseFloat(value));
+      } else if (operator === "×") {
+        setMemory(memory * parseFloat(value));
+      } else if (operator === "÷") {
+        setMemory(memory / parseFloat(value));
+      }
+    } else {
+      setMemory(parseFloat(value));
+    }
+    changeValue("0");
+    setOperator("÷");
+    return;
+  };
+
+  const equal = () => {
+    if (!operator) return;
+
+    if (operator === "+") {
+      changeValue((memory + parseFloat(value)).toString());
+    } else if (operator === "−") {
+      changeValue((memory - parseFloat(value)).toString());
+    } else if (operator === "×") {
+      changeValue((memory * parseFloat(value)).toString());
+    } else if (operator === "÷") {
+      changeValue((memory / parseFloat(value)).toString());
+    }
+    setMemory(null);
+    setOperator(null);
+    return;
+  };
 
   return (
     <div className="grid gap-3 grid-rows-5 grid-cols-4">
@@ -105,7 +205,7 @@ function Buttons(props: {
       <button onClick={handleButtonPress} value="0" className="btn-zero">
         0
       </button>
-      <button onClick={handleButtonPress} value="." className="btn-calculator">
+      <button onClick={dot} value="." className="btn-calculator">
         .
       </button>
       <button onClick={equal} value="=" className="btn-operator">
