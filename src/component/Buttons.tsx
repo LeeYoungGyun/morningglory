@@ -17,14 +17,6 @@ function Buttons(props: {
     } else {
       changeValue(value + e.currentTarget.value);
     }
-    // const num = parseFloat(value);
-
-    //   if (value[value.length - 1] === ".") {
-    //     setValue(value + content);
-    //   } else {
-    //     setValue(parseFloat(num + content).toString());
-    //   }
-    // };
   };
 
   const allClear = () => {
@@ -74,7 +66,6 @@ function Buttons(props: {
 
   const minus = () => {
     if (operator !== null) {
-        console.log("memory =" + memory);
       if (operator === "+") {
         setMemory(memory + parseFloat(value));
       } else if (operator === "−") {
@@ -86,14 +77,9 @@ function Buttons(props: {
       }
     } else {
       setMemory(parseFloat(value));
-        console.log("memory2 = " + memory);
     }
     changeValue("0");
     setOperator("−");
-      console.log("final memory =" + memory);
-      console.log("final memory =" + memory);
-      console.log("final value =" + value);
-
     return;
   };
 
