@@ -10,7 +10,11 @@ function Calculator() {
   useEffect(() => {
     const Timer = setInterval(() => {
       let time = new Date();
-      setTime(time.getHours().toString().padStart(2, "0") + ":" + time.getMinutes().toString().padStart(2, "0"));
+      setTime(
+        time.getHours().toString().padStart(2, "0") +
+          ":" +
+          time.getMinutes().toString().padStart(2, "0")
+      );
     }, 1000);
 
     return () => {
@@ -22,8 +26,16 @@ function Calculator() {
     <div className="flex justify-center">
       <div className="w-full h-full bg-black text-white rounded-3xl p-5 box-border max-w-lg">
         <div className="h-64 px-5 py-0 justify-between">{time}</div>
+        <div className="text-9xl mb-5 font-light text-right">{value2}</div>
         <div className="text-9xl mb-5 font-light text-right">{value}</div>
-        <Buttons value={value} changeValue={setValue} />
+        <Buttons
+          value={value}
+          changeValue={setValue}
+          value2={value2}
+          setValue2={setValue2}
+          value3={value3}
+          setValue3={setValue3}
+        />
       </div>
     </div>
   );

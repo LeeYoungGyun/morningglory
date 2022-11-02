@@ -1,7 +1,14 @@
-import React, { MouseEvent, ReactElement, useState } from "react";
+import React, { MouseEvent, ReactElement, useEffect, useState } from "react";
 
-function Buttons(props: { value: string; changeValue: any }): ReactElement {
-  const { value, changeValue } = props;
+function Buttons(props: {
+  value: string;
+  changeValue: any;
+  value2: any;
+  setValue2: any;
+  value3: any;
+  setValue3: any;
+}): ReactElement {
+  const { value, changeValue, value2, setValue2, value3, setValue3 } = props;
 
   const handleButtonPress = (e: MouseEvent<HTMLButtonElement>) => {
     if (value === "0") {
@@ -34,22 +41,16 @@ function Buttons(props: { value: string; changeValue: any }): ReactElement {
   // };
 
   const plus = () => {
+      setValue2(value);
+      changeValue(value3);
 
   };
 
-  const minus = () => {
+  const minus = () => {};
 
-  };
-
-  const multiplication = () => {
-
-  };
-  const division = () => {
-
-  };
-  const equal = () => {
-
-  };
+  const multiplication = () => {};
+  const division = () => {};
+  const equal = () => {};
 
   return (
     <div className="grid gap-3 grid-rows-5 grid-cols-4">
