@@ -11,7 +11,7 @@ function MainPage() {
               morningglory
             </span>
           </a>
-          <ul className="float-right pt-1.5">
+          <ul className="float-right pt-1.5 ">
           <li className="float-left list-none px-5">
             <Link to="/">Home</Link>
           </li>
