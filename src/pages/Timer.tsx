@@ -31,7 +31,8 @@ function Timer() {
 
   
   return (
-    <div className="table-cell align-middle">
+    <div >
+     <div>
       <div className="relative w-72 h-72">
         <svg
           className="base-timer__svg"
@@ -56,6 +57,7 @@ function Timer() {
       <button type="button" onClick={toggleBtn}>
         {timeStep === "play" ? "STOP" : "START"}
       </button>
+     </div>
     </div>
   );
 }
