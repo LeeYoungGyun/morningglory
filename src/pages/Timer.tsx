@@ -31,7 +31,7 @@ function Timer() {
 
   
   return (
-    <div>
+    <div className="table-cell align-middle">
       <div className="relative w-72 h-72">
         <svg
           className="base-timer__svg"
