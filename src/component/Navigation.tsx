@@ -8,7 +8,7 @@ function Navigation() {
         <div className="bg-amber-50 leading-5 px-2">
           <a>
             <span className="text-blue-500 text-4xl leading-normal">
-              morningglory
+            <Link to="/">morningglory</Link>
             </span>
           </a>
           <ul className="float-right pt-1.5 ">
@@ -18,8 +18,11 @@ function Navigation() {
             <li className="float-left list-none px-5">
               <Link to="/pages/calculator">Calculator</Link>
             </li>
-            <li className="float-left list-none pr-96">
+            <li className="float-left list-none px-5">
               <Link to="/pages/Timer">Timer</Link>
+            </li>
+            <li className="float-left list-none pr-96">
+              <Link to="/pages/Ladder">Ladder game</Link>
             </li>
           </ul>
         </div>

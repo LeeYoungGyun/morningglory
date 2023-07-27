@@ -56,10 +56,13 @@ function Timer() {
           : {seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60}
         </span>
         </div>
-        <button type="button" onClick={toggleBtn}>
+      </div>
+        <button className=" w-16 h-16 rounded-full bg-emerald-300	text-base	text-center	" type="button" onClick={toggleBtn}>
+          Cancle
+        </button>
+        <button className=" w-16 h-16 rounded-full bg-emerald-300	text-base	text-center	" type="button" onClick={toggleBtn}>
           {timeStep === "play" ? "STOP" : "START"}
         </button>
-      </div>
     </>
   );
 }
