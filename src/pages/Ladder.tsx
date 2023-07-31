@@ -1,30 +1,95 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navigation from "../component/Navigation";
+import LadderGame from "../component/LadderGame";
 
 function Ladder() {
+  const [participant, setParticipant] = useState<number>(5);
+  const [nextPageShow, setNextPageShow] = useState<boolean>(false);
+
+  const plusBtn = () => {
+    if (participant < 10) {
+      setParticipant(participant + 1);
+    };
+  };
+
+  const minusBtn = () => {
+    if (participant > 2) {
+      setParticipant(participant - 1);
+    };
+  };
+
+  const changeInputParticipant = (event: any) => {
+    console.log('parseInt(event.target.value)')
+    if (parseInt(event.target.value) < 2 || parseInt(event.target.value) > 10) {
+      alert('Please enter a number of participants between 2 and 10.');
+      return;
+    }
+    console.log('participant====', parseInt(event.target.value));
+    if (isNaN(parseInt(event.target.value))) {
+      setParticipant(2);
+    }
+    
+    setParticipant(parseInt(event.target.value));
+  };
+  
+  useEffect(() => {
+    console.log('participant22222====', participant);
+  }, [participant]);
+
+
+
+  useEffect(() => {
+    
+  }, [])
+
+  const goLadderPage = () => {
+    setNextPageShow(true);
+  };
+
+
+
+  if(nextPageShow) {
+    return <LadderGame participant={participant} />
+  };
 
 
   return (
     <>
-    <Navigation />
-    <div className="flex justify-center mt-3">
-      <h1 className="text-5xl">
-        Ladder Game
-      </h1>
-    </div>
-    <div className="flex justify-center mt-7">
-      <div className="bg-yellow-600 w-3/6 h-64 rounded-3xl">
-        {/* 문구(Please let me know the number of participants) */}
-        <div className="flex justify-center text-stone-100 text-xl">
-          <label>Please let me know the number of participants</label>
+      <Navigation />
+        <div>
+          {/* 사타리타기 초기 페이지 start */}
+          <div className="flex justify-center mt-3">
+            <h1 className="text-5xl">
+              Ladder Game
+            </h1>
+          </div>
+          <div className="flex justify-center mt-7">
+            <div className="  bg-lime-600 w-3/6 h-64 rounded-3xl">
+              {/* 문구(Please let me know the number of participants) */}
+              <div className="flex justify-center text-stone-100 text-xl mt-4">
+                <label>Please let me know the number of participants</label>
+              </div>
+              {/* <!-- Player Number Controls --> */}
+              <div className="flex justify-center mt-5">
+                {participant > 1 && (
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mx-2" onClick={minusBtn}>-</button>
+                )}
+                <input className="text-center border border-gray-300 shadow rounded-full text-lg h-10 w-20 px-2 mx-2" type="number" min="0" value={participant} onChange={changeInputParticipant} />
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mx-2" onClick={plusBtn}>+</button>
+              </div>
+              {/* <!-- Game Controls --> */}
+              <div className="flex justify-center mt-4">
+                <button className="bg-blue-500 text-white px-4 py-2 rounded mx-2" onClick={goLadderPage}>Start</button>
+                {/* <button className="bg-red-500 text-white px-4 py-2 rounded mx-2">Stop</button> */}
+              </div>
+              {/* 문구(최대 10명) */}
+              <div className="flex justify-center text-stone-200 text-xl self-end mt-9">
+                <label>* Up to 10 people</label>
+              </div>
+            </div>
+          </div>
+          {/* 사타리타기 초기 페이지 end */}
         </div>
-
-        {/* 문구(최대 10명) */}
-        <div className="flex justify-center items-end text-stone-200 text-xl">
-          <label>Up to 10 people</label>
-        </div>
-      </div>
-    </div>
     </>
   );
 }

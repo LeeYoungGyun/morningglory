@@ -57,12 +57,15 @@ function Timer() {
         </span>
         </div>
       </div>
-        <button className=" w-16 h-16 rounded-full bg-emerald-300	text-base	text-center	" type="button" onClick={toggleBtn}>
-          Cancle
+      <div className=" flex justify-center">
+        <button className=" w-16 h-16 rounded-full bg-emerald-300	text-base	text-center" type="button" onClick={toggleBtn}>
+          Cancel
         </button>
-        <button className=" w-16 h-16 rounded-full bg-emerald-300	text-base	text-center	" type="button" onClick={toggleBtn}>
+        <button className=" w-16 h-16 rounded-full bg-emerald-300	text-base	text-center ml-5" type="button" onClick={toggleBtn}>
           {timeStep === "play" ? "STOP" : "START"}
         </button>
+      </div>
+
     </>
   );
 }
