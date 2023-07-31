@@ -2,16 +2,24 @@ import { useCallback, useEffect, useState } from "react";
 import Navigation from "../component/Navigation";
 
 function Timer() {
-  const [seconds, setSeconds] = useState(1000);
+  const [seconds, setSeconds] = useState(0);
   const [timeStep, setTimeStep] = useState("wait");
+  const [timeType, setTimeType] = useState(true);
 
   const toggleBtn = useCallback(() => {
+    if (timeType === true) {
+      setTimeType(false);
+     } 
+
    if (timeStep === 'play') {
      setTimeStep('pause');
      return;
    }
    setTimeStep('play');
-  }, [timeStep,setTimeStep]);
+
+   console.log('timeStep====', timeStep);
+   console.log('timeType====', timeType);
+  }, [timeStep, timeType]);
 
   useEffect(() => {
     if(timeStep !== "play") return;
@@ -28,12 +36,11 @@ function Timer() {
   //     return <div>Time Is Up</div>
   //   }
   // }, [seconds])
- 
 
-  
   return (
     <>
       <Navigation />
+      {/* 보이는 창 */}
       <div className="grid place-items-center items-center">
         <div className="relative w-72 h-72">
           <svg
@@ -50,11 +57,29 @@ function Timer() {
               />
             </g>
           </svg>
-          <span className="absolute w-72 h-72 top-0 flex items-center	justify-center text-5xl">
+          {timeType === true ? (
+            <div className="absolute w-72 h-72 top-0 flex items-center justify-center">
+            <input
+              type="text"
+              className="w-64 h-16 rounded-full text-5xl text-center"
+              value={`${seconds} 시`}
+            />
+          </div>
+          ) : (
+            <span className="absolute w-72 h-72 top-0 flex items-center justify-center text-5xl">
+              {Math.floor(seconds / 3600) < 10 ? `0${Math.floor(seconds / 3600)}` : Math.floor(seconds / 3600)}{" "}
+              : {Math.floor(seconds / 60) % 60 < 10 ? `0${Math.floor(seconds / 60) % 60}` : Math.floor(seconds / 60) % 60}{" "}
+              : {seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60}
+            </span>
+          )}
+
+
+
+          {/* <span className="absolute w-72 h-72 top-0 flex items-center	justify-center text-5xl">
           {Math.floor(seconds / 3600) < 10 ? `0${Math.floor(seconds / 3600)}` : Math.floor(seconds / 3600)}{" "}
           : {Math.floor(seconds / 60) % 60 < 10 ? `0${Math.floor(seconds / 60) % 60}` : Math.floor(seconds / 60) % 60}{" "}
           : {seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60}
-        </span>
+        </span> */}
         </div>
       </div>
       <div className=" flex justify-center">
