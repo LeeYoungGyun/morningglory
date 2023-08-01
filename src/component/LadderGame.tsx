@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  } from "react";
 import Navigation from "../component/Navigation";
 
 
@@ -24,4 +24,6 @@ console.log('props.participant====', props.participant)
   );
 }
 
+
 export default LadderGame;
+
