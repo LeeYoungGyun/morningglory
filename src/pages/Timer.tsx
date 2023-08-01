@@ -3,6 +3,9 @@ import Navigation from "../component/Navigation";
 
 function Timer() {
   const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [totalSeconds, setTotalSeconds] = useState(0);
   const [timeStep, setTimeStep] = useState("wait");
   const [timeType, setTimeType] = useState(true);
 
@@ -24,18 +27,40 @@ function Timer() {
   useEffect(() => {
     if(timeStep !== "play") return;
     const countDown = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds -1);
+      if (totalSeconds > 0) {
+        setTotalSeconds(totalSeconds -1);
       }
     }, 1000);
     return () => clearInterval(countDown);
-  }, [timeStep, seconds, setSeconds])
+  }, [timeStep, totalSeconds])
+
+  const handleHoursChange = (e: any) => {
+    const newHours = parseInt(e.target.value);
+    if (!isNaN(newHours)) {
+      setHours(newHours);
+    }
+  };
+  
+  const handleMinutesChange = (e: any) => {
+    const newMinutes = parseInt(e.target.value);
+    if (!isNaN(newMinutes)) {
+      setMinutes(newMinutes);
+    }
+  };
+  
+  const handleSecondsChange = (e: any) => {
+    const newSeconds = parseInt(e.target.value);
+    if (!isNaN(newSeconds)) {
+      setSeconds(newSeconds);
+    }
+  };
+
 
   // const timeUp = useCallback(() => {
-  //   if(seconds === 0) {
+  //   if(totalSeconds === 0) {
   //     return <div>Time Is Up</div>
   //   }
-  // }, [seconds])
+  // }, [totalSeconds])
 
   return (
     <>
@@ -59,26 +84,44 @@ function Timer() {
           </svg>
           {timeType === true ? (
             <div className="absolute w-72 h-72 top-0 flex items-center justify-center">
-            <input
-              type="text"
-              className="w-64 h-16 rounded-full text-5xl text-center"
-              value={`${seconds} 시`}
-            />
+            <div>
+              <input
+                type="text"
+                className="w-16 h-12 rounded text-center"
+                value={hours}
+                onChange={handleHoursChange}
+              />
+              시{" "}
+              <input
+                type="text"
+                className="w-16 h-12 rounded text-center"
+                value={minutes}
+                onChange={handleMinutesChange}
+              />
+              분{" "}
+              <input
+                type="text"
+                className="w-16 h-12 rounded text-center"
+                value={seconds}
+                onChange={handleSecondsChange}
+              />
+              초
+            </div>
           </div>
           ) : (
             <span className="absolute w-72 h-72 top-0 flex items-center justify-center text-5xl">
-              {Math.floor(seconds / 3600) < 10 ? `0${Math.floor(seconds / 3600)}` : Math.floor(seconds / 3600)}{" "}
-              : {Math.floor(seconds / 60) % 60 < 10 ? `0${Math.floor(seconds / 60) % 60}` : Math.floor(seconds / 60) % 60}{" "}
-              : {seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60}
+              {Math.floor(totalSeconds / 3600) < 10 ? `0${Math.floor(totalSeconds / 3600)}` : Math.floor(totalSeconds / 3600)}{" "}
+              : {Math.floor(totalSeconds / 60) % 60 < 10 ? `0${Math.floor(totalSeconds / 60) % 60}` : Math.floor(totalSeconds / 60) % 60}{" "}
+              : {totalSeconds % 60 < 10 ? `0${totalSeconds % 60}` : totalSeconds % 60}
             </span>
           )}
 
 
 
           {/* <span className="absolute w-72 h-72 top-0 flex items-center	justify-center text-5xl">
-          {Math.floor(seconds / 3600) < 10 ? `0${Math.floor(seconds / 3600)}` : Math.floor(seconds / 3600)}{" "}
-          : {Math.floor(seconds / 60) % 60 < 10 ? `0${Math.floor(seconds / 60) % 60}` : Math.floor(seconds / 60) % 60}{" "}
-          : {seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60}
+          {Math.floor(totalSeconds / 3600) < 10 ? `0${Math.floor(totalSeconds / 3600)}` : Math.floor(totalSeconds / 3600)}{" "}
+          : {Math.floor(totalSeconds / 60) % 60 < 10 ? `0${Math.floor(totalSeconds / 60) % 60}` : Math.floor(totalSeconds / 60) % 60}{" "}
+          : {totalSeconds % 60 < 10 ? `0${totalSeconds % 60}` : totalSeconds % 60}
         </span> */}
         </div>
       </div>
