@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "../component/Navigation";
 import LadderGame from "../component/LadderGame";
+import { useSelector, useDispatch } from 'react-redux';
+import { setParticipantState } from '../actions/participantActions';
+import { RootState } from '../store/store';
 
 function Ladder() {
   const [participant, setParticipant] = useState<number>(5);
   const [nextPageShow, setNextPageShow] = useState<boolean>(false);
+  const participantState = useSelector((state: RootState) => state.participant);
+  const dispatch = useDispatch();
+
 
   const plusBtn = () => {
     if (participant < 10) {
       setParticipant(participant + 1);
+      dispatch(setParticipantState(participantState + 1));
     };
   };
 
   const minusBtn = () => {
     if (participant > 2) {
       setParticipant(participant - 1);
+      dispatch(setParticipantState(participantState - 1));
     };
   };
 
@@ -34,7 +42,8 @@ function Ladder() {
   
   useEffect(() => {
     console.log('participant22222====', participant);
-  }, [participant]);
+    console.log("Current participant value from Redux store:", participantState); // 여기에서 출력합니다.
+  }, [participant, participantState]);
 
 
 
