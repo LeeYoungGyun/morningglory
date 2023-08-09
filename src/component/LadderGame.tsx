@@ -1,13 +1,14 @@
 import React, {  } from "react";
 import Navigation from "../component/Navigation";
+import { useSelector, useDispatch } from 'react-redux';
+import { setParticipant } from '../actions/participantActions';
+import { RootState } from '../store/store';
 
+function LadderGame() {
+  const participant = useSelector((state: RootState) => state.participant);
+  // const dispatch = useDispatch();
 
-type LadderGameProps = {
-   participant: number;
- };
-
-function LadderGame(props: LadderGameProps) {
-console.log('props.participant====', props.participant)
+  console.log('participantState====', participant)
 
   return (
     <>
