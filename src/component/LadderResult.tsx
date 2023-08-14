@@ -1,30 +1,12 @@
-import React, { useState } from "react";
+import React, {  } from "react";
 import Navigation from "../component/Navigation";
-import LadderResult from "../component/LadderResult";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // import { setParticipant } from '../actions/participantActions';
 import { RootState } from '../store/store';
 
-function LadderGame( { onBack }: { onBack: () => void } ) {
+function LadderResult({ ononBack }: { ononBack: () => void }) {
   const participant = useSelector((state: RootState) => state.participant);
   // const dispatch = useDispatch();
-  const [resultPage, setResultPage] = useState<boolean>(false);
-
-  // 결과창 T/F
-  const goResult = () => {
-    // if()
-    setResultPage(true);
-  };
-
-  // LadderGame 페이지 보여주기
-  const goBefore = () => {
-    setResultPage(false);
-  };
-
-  // 결과창 보여주기
-  if(resultPage) {
-    return <LadderResult ononBack={goBefore} />
-  };
 
   console.log('participantState====', participant)
 
@@ -43,8 +25,8 @@ function LadderGame( { onBack }: { onBack: () => void } ) {
       </div>
       <div className="flex justify-center mt-20">
         {/* <button className="border-black border-2 w-14">Back</button> */}
-        <button className="button button-first" onClick={onBack}>Back</button>
-        <button className="button button-second ml-11" onClick={goResult}>Start</button>
+        <button className="button button-first" onClick={ononBack}>Back1111</button>
+        <button className="button button-second ml-11">Start111</button>
         {/* <button className="border-black border-2 w-14 ml-11">Start</button> */}
       </div>
     </>
@@ -52,5 +34,5 @@ function LadderGame( { onBack }: { onBack: () => void } ) {
 }
 
 
-export default LadderGame;
+export default LadderResult;
 

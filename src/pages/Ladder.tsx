@@ -51,10 +51,12 @@ function Ladder() {
     setNextPageShow(true);
   };
 
-
+  const goBack = () => {
+    setNextPageShow(false);
+  };
 
   if(nextPageShow) {
-    return <LadderGame />
+    return <LadderGame onBack={goBack}/>
   };
 
 
