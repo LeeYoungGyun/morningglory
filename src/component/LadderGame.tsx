@@ -7,7 +7,6 @@ import { RootState } from '../store/store';
 
 function LadderGame( { onBack }: { onBack: () => void } ) {
   const participant = useSelector((state: RootState) => state.participant);
-  // const dispatch = useDispatch();
   const [resultPage, setResultPage] = useState<boolean>(false);
 
   // 결과창 T/F
