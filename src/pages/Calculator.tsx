@@ -27,7 +27,7 @@ function Calculator() {
     <>
       <Navigation />
       <div className="flex justify-center">
-        <div className="w-full h-full bg-black text-white rounded-3xl p-5 box-border max-w-lg">
+        <div className="w-full min-h-screen bg-black text-white rounded-3xl p-5 box-border max-w-lg">
           <div className="h-64 px-5 py-0 justify-between">{time}</div>
           <div className="text-3xl mb-5 font-light text-right text-slate-300">
             {memory} {operator}
