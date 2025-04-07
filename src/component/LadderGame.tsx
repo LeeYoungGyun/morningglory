@@ -25,8 +25,6 @@ function LadderGame( { onBack }: { onBack: () => void } ) {
     return <LadderResult ononBack={goBefore} />
   };
 
-  console.log('participantState====', participant)
-
   return (
     <>
       <Navigation />

@@ -20,8 +20,11 @@ function Navigation() {
             <li className="float-left list-none px-5">
               <Link to="/pages/Timer">Timer</Link>
             </li>
-            <li className="float-left list-none pr-96">
+            <li className="float-left list-none px-5">
               <Link to="/pages/Ladder">Ladder game</Link>
+            </li>
+            <li className="float-left list-none pr-96">
+              <Link to="/pages/Weather">Weather</Link>
             </li>
           </ul>
         </div>
